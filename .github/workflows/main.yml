@@ -29,14 +29,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          npm install -g allure-commandline --save-dev
           pip install -r requirements.txt
 
       - name: Run tests
         run: |
           mkdir allure-report
           pytest --alluredir=report 
-          allure generate --single-file report 
           allure generate --single-file report 
         continue-on-error: true
 

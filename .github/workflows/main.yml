@@ -30,9 +30,8 @@ jobs:
       - name: Download allure
         run: |
           wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure_2.27.0-1_all.deb
-      - name: Install Allure
-        run:
-          sudo dpkg -i allure_2.27.0-1_all.deb
+          npm install --save-dev allure-commandline
+          npx allure-commandline serve
 
       - name: Install dependencies
         run: |

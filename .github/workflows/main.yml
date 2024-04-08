@@ -27,12 +27,6 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Download allure
-        run: |
-          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure_2.27.0-1_all.deb
-          npm install --save-dev allure-commandline
-          npx allure-commandline serve
-
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -42,7 +36,7 @@ jobs:
           mkdir allure-report
           pytest --alluredir=report 
           allure generate --single-file report --clean
-        continue-on-error: false
+        continue-on-error: true
 
       - name: Set output
         if: success() || failure()

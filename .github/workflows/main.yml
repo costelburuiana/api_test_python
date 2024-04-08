@@ -6,8 +6,8 @@ on:
     - cron: '0 15 * * 1-5'
 
 env:
-  password: ${{ secrets.PASSWORD }}
-  email: ${{ secrets.EMAIL }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+  EMAIL: ${{ secrets.EMAIL }}
 
 permissions:
   contents: read

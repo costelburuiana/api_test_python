@@ -27,6 +27,10 @@ jobs:
         with:
           python-version: 3.11
 
+      - name: Install Allure
+        run: |
+          sudo dpkg -i allure_2.24.0-1_all.deb
+            
       - name: Install dependencies
         run: |
           pip install -r requirements.txt

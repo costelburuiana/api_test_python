@@ -12,7 +12,7 @@ All the tests are running in a virtual environment (pipenv). To run the tests in
 Bellow are the commands to run the tests:
 
 1. `pytest --alluredir=report` → will generate the JSON files for each test case in the `report` folder that will be used to view the report.
-2. `allure serve allure-results` → report will be open in the default browser.
+2. `allure serve report` → report will open in the default browser.
  
 The credentials that generated the `bearer token` are stored in the `.env` file on local machine.
 

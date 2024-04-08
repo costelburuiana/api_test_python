@@ -37,7 +37,7 @@ def test_generate_token():
 @allure.description("Test fetching all airports")
 def test_fetch_all_airports():
     response = requests.get(ENDPOINT + "/airports")
-    assert response.status_code == 2001
+    assert response.status_code == 2001 # Error here
     assert len(response.json()) > 0
 
 @allure.description("Test fetching an airport by ID")

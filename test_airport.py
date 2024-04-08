@@ -41,7 +41,7 @@ def test_generate_token():
 @allure.description("Test fetching all airports from API")
 def test_fetch_all_airports():
     response = requests.get(ENDPOINT + "/airports")
-    assert response.status_code == 1200
+    assert response.status_code == 200
     assert len(response.json()) > 0
 
 @allure.title("Test getting 'OTP' airport by ID")

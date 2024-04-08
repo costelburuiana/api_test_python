@@ -34,7 +34,6 @@ jobs:
 
       - name: Run tests
         run: |
-          mkdir allure-report
           pytest --alluredir=report 
           allure generate --single-file report 
         continue-on-error: true

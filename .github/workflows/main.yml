@@ -25,11 +25,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r api_test_python/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          cd api_test_python
           mkdir -p reports
           pytest --html=reports/index.html 
         continue-on-error: true
@@ -37,7 +36,7 @@ jobs:
       - name: Set output
         if: success() || failure()
         id: results
-        run: echo "artifactPath=api_test_python/reports/" >> $GITHUB_ENV
+        run: echo "artifactPath=reports/" >> $GITHUB_ENV
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -45,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: selenium/reports/
+          path: reports/
 
       - name: Deploy to Github pages
         id: deploy

@@ -14,6 +14,6 @@ Bellow are the commands to run the tests on local machine:
 1. `pytest --alluredir=report` → will generate the JSON files for each test case in the `report` folder that will be used to view the report.
 2. `allure serve report` → report will open in the default browser.
  
-The credentials that generated the `bearer token` are stored in the `.env` file on local machine.
+The credentials that generated the `bearer token` are stored in the `.env` file on local machine, for GitHub Actions they are stored in `Repository secrets` and the enviroment varables are added in the `yml` file.
 
-### An HTML report can be visualized on https://costelburuiana.github.io/api_test_python/
+### The last generated report can be visualized on https://costelburuiana.github.io/api_test_python/

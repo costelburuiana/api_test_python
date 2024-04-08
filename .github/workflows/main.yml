@@ -31,34 +31,26 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Prepare Allure history
-        run: |
-          cd ..
-          mkdir -p ${{ vars.ALLURE_RESULTS_PATH }}
-
       - name: Run tests
         run: |
-          mkdir allure-report
+          mkdir -p report
           pytest --alluredir=report 
-          allure generate --single-file report 
+          allure generate --single-file report
         continue-on-error: true
 
-      - name: Get Allure history 
-        uses: actions/checkout@v3
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages 
-          path: gh-pages
+      - name: Set output
+        if: success() || failure()
+        id: results
+        run: echo "artifactPath=allure-report/" >> $GITHUB_ENV
 
-      - name: Allure report action 
-        uses: simple-elf/allure-report-action@master
-        if: always() 
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+  
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          allure_results: ${{ vars.ALLURE_RESULTS_PATH }} 
-          allure_history: allure-history 
-          keep_reports: 30 
+          path: allure-report/
 
-      - name: Deploy Allure report to GitHub Pages 
-        if: always() 
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to Github pages
+        id: deploy
+        uses: actions/deploy-pages@v1
